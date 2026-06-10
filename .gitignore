@@ -1,19 +1,21 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
+# 앞에 /를 빼서 하위 폴더의 node_modules까지 모두 잡습니다.
+node_modules/
 /.pnp
 .pnp.js
 
 # testing
-/coverage
+coverage/
 
 # next.js
-/.next/
-/out/
+# 하위 프로젝트의 빌드 결과물까지 모두 제외하기 위해 /를 제거합니다.
+.next/
+out/
 
 # production
-/build
+build/
 
 # misc
 .DS_Store
@@ -25,12 +27,15 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
+# .env 파일들은 프로젝트 폴더 내부에 위치하므로 앞에 **/를 붙이거나 슬래시 없이 작성합니다.
 .env*.local
 .env
+**/.env
+**/.env*.local
 
 # vercel
-.vercel
+.vercel/
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts
+# 앞서 말씀드린 대로 next-env.d.ts는 제외 목록에서 삭제하는 것을 추천합니다.
