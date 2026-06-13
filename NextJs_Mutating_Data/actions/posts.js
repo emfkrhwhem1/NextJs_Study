@@ -45,7 +45,9 @@ export async function createPost(prevState, formData) {
     });
     console.log(title, image, content);
 
+    revalidatePath('/', 'layout')
     redirect('/feed');
+
 }
 
 

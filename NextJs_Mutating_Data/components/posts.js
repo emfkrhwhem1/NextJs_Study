@@ -34,7 +34,7 @@ function Post({ post, action }) {
   );
 }
 
-export default function Posts({ posts, action }) {
+export default function Posts({ posts }) {
 
   const [optimisticPosts, updateOptimisticPosts] = useOptimistic(posts, (prevPosts, updatedPostId) => {
     const updatedPostIndex = prevPosts.findIndex(post => post.id === updatedPostId);
