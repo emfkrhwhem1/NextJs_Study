@@ -7,7 +7,7 @@ import Messages from '@/components/messages';
 // export const dynamic = 'force-dynamic';
 
 export default async function MessagesPage() {
-  unstable_noStore();
+  //unstable_noStore();
   console.log("=== MessagesPage 서버에서 실행됨! ===");
   const response = await fetch('http://localhost:8080/messages', {
     // 강제로 캐시를 초기화하기
@@ -18,6 +18,7 @@ export default async function MessagesPage() {
       // 5초동안 캐시하고 그 뒤로 방문하는건 새 데이터 가져옴
       revalidate: 5,
     } */
+    next: { tags: ['msg'] }
   });
   const messages = await response.json();
 
