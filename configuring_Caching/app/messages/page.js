@@ -1,5 +1,5 @@
-import { unstable_noStore } from 'next/cache'
 import Messages from '@/components/messages';
+import { getMessages } from '@/lib/messages';
 
 // export const revalidate = 5;
 
@@ -8,19 +8,19 @@ import Messages from '@/components/messages';
 
 export default async function MessagesPage() {
   //unstable_noStore();
-  console.log("=== MessagesPage 서버에서 실행됨! ===");
-  const response = await fetch('http://localhost:8080/messages', {
+  /* const response = await fetch('http://localhost:8080/messages', {
     // 강제로 캐시를 초기화하기
     // cache: 'force-cache',
     // 여러 요청을 보게되는 것 Next 15의 기본값
     // cache: 'no-store'
-    /* next: {
-      // 5초동안 캐시하고 그 뒤로 방문하는건 새 데이터 가져옴
-      revalidate: 5,
-    } */
-    next: { tags: ['msg'] }
-  });
-  const messages = await response.json();
+    //next: {
+    // 5초동안 캐시하고 그 뒤로 방문하는건 새 데이터 가져옴
+    //revalidate: 5,
+    //}
+    //next: { tags: ['msg'] }
+  }); */
+  const messages = await getMessages();
+  //const messages = await response.json();
 
   if (!messages || messages.length === 0) {
     return <p>No messages found</p>;
